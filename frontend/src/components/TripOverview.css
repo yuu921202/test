@@ -1,0 +1,225 @@
+.trip-overview {
+  padding: 24px;
+  background: rgba(58, 51, 43, 0.35);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 24px;
+  animation: fadeInDown 0.5s ease-out;
+}
+
+.overview-header {
+  margin-bottom: 18px;
+}
+
+.overview-title {
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+  margin: 0;
+}
+
+/* 时间轴容器 */
+.overview-timeline-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201, 169, 98, 0.3) transparent;
+}
+
+.overview-timeline-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.overview-timeline-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.overview-timeline-container::-webkit-scrollbar-thumb {
+  background: rgba(201, 169, 98, 0.3);
+  border-radius: 3px;
+}
+
+.overview-timeline-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 169, 98, 0.5);
+}
+
+.overview-timeline {
+  display: flex;
+  gap: 14px;
+  padding-bottom: 8px;
+  min-width: min-content;
+}
+
+/* 每一天的区块 */
+.overview-day-block {
+  flex-shrink: 0;
+  width: 160px;
+  padding: 14px;
+  background: rgba(58, 51, 43, 0.5);
+  border: 1.5px solid var(--border);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 200ms ease;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.overview-day-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.overview-day-block:hover {
+  background: rgba(201, 169, 98, 0.12);
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(201, 169, 98, 0.15);
+}
+
+.overview-day-block:hover::before {
+  opacity: 1;
+}
+
+/* 日期标签 */
+.overview-day-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.overview-day-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  font-family: var(--font-heading);
+  letter-spacing: -0.3px;
+}
+
+.overview-attraction-count {
+  font-size: 11px;
+  color: var(--muted-foreground);
+  font-family: var(--font-body);
+}
+
+/* 体力强度指示 */
+.overview-intensity {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.intensity-bar {
+  border-radius: 3px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.15);
+  transition: all 200ms ease;
+}
+
+.overview-day-block:hover .intensity-bar {
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.intensity-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+}
+
+.intensity-value {
+  color: var(--foreground);
+  font-weight: 600;
+  font-family: var(--font-body);
+}
+
+.intensity-note {
+  color: var(--muted-foreground);
+  font-family: var(--font-body);
+  font-style: italic;
+}
+
+/* 景点预览 */
+.overview-attractions-preview {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  min-height: 0;
+}
+
+.preview-text {
+  font-size: 11px;
+  color: var(--foreground);
+  font-family: var(--font-body);
+  line-height: 1.4;
+  margin: 0;
+  word-break: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* 点击提示 */
+.overview-click-hint {
+  font-size: 9px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  font-family: var(--font-display);
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.overview-day-block:hover .overview-click-hint {
+  opacity: 1;
+}
+
+/* 移动端响应 */
+@media (max-width: 768px) {
+  .trip-overview {
+    padding: 18px;
+    margin-bottom: 20px;
+  }
+
+  .overview-timeline {
+    gap: 12px;
+  }
+
+  .overview-day-block {
+    width: 140px;
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .overview-day-label {
+    font-size: 12px;
+  }
+
+  .overview-attraction-count {
+    font-size: 10px;
+  }
+
+  .intensity-bar {
+    height: 36px !important;
+  }
+
+  .preview-text {
+    font-size: 10px;
+  }
+}

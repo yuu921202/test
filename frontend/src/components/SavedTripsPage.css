@@ -1,0 +1,370 @@
+.saved-trips-page {
+  padding: 32px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* 頁面標題 */
+.page-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.page-title {
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--foreground);
+  font-family: var(--font-heading);
+  margin: 0 0 12px 0;
+  letter-spacing: -0.5px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4), -1px -1px 1px rgba(255, 255, 255, 0.05);
+}
+
+.page-subtitle {
+  font-size: 13px;
+  color: var(--muted-foreground);
+  font-family: var(--font-body);
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+/* 搜尋區塊 */
+.search-section {
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 16px;
+  background: rgba(58, 51, 43, 0.3);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--foreground);
+  font-family: var(--font-body);
+  font-size: 14px;
+  transition: all 200ms ease;
+}
+
+.search-input:focus {
+  outline: none;
+  background: rgba(58, 51, 43, 0.5);
+  border-color: var(--accent);
+  box-shadow: 0 0 8px rgba(201, 169, 98, 0.2);
+}
+
+.search-input::placeholder {
+  color: var(--muted-foreground);
+}
+
+/* 行程容器 */
+.trips-container {
+  min-height: 300px;
+}
+
+.trips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+/* 行程卡片 */
+.trip-card {
+  position: relative;
+  padding: 24px;
+  background: rgba(58, 51, 43, 0.4);
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 250ms ease;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+}
+
+.trip-card::before {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(201, 169, 98, 0.1) 50%,
+    transparent 100%
+  );
+  transition: all 300ms ease;
+  pointer-events: none;
+}
+
+.trip-card:hover {
+  background: rgba(201, 169, 98, 0.12);
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(201, 169, 98, 0.2);
+}
+
+.trip-card:hover::before {
+  top: 0;
+  left: 0;
+}
+
+/* 刪除按鈕 */
+.delete-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.2);
+  border-radius: 4px;
+  color: #f87171;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 150ms ease;
+  z-index: 10;
+}
+
+.delete-btn:hover {
+  background: rgba(248, 113, 113, 0.2);
+  border-color: #f87171;
+  box-shadow: 0 4px 12px rgba(248, 113, 113, 0.25);
+  transform: scale(1.05);
+}
+
+.delete-btn:active {
+  transform: scale(0.95);
+}
+
+/* 卡片內容 */
+.card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.destination-name {
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--foreground);
+  font-family: var(--font-heading);
+  margin: 0;
+  letter-spacing: -0.3px;
+  line-height: 1.3;
+}
+
+.card-meta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted-foreground);
+  font-family: var(--font-body);
+}
+
+.meta-item svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* 行程詳情 */
+.trip-details {
+  padding: 14px;
+  background: rgba(156, 139, 122, 0.08);
+  border: 1px solid rgba(156, 139, 122, 0.15);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+
+.detail-label {
+  color: var(--muted-foreground);
+  font-weight: 600;
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.detail-value {
+  color: var(--foreground);
+  font-weight: 500;
+  font-family: var(--font-body);
+}
+
+/* 卡片頁腳 */
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--muted-foreground);
+  font-family: var(--font-body);
+  font-style: italic;
+}
+
+.card-footer svg {
+  flex-shrink: 0;
+}
+
+/* 加載按鈕 */
+.load-btn {
+  padding: 12px 18px;
+  background: linear-gradient(180deg, #D4B872 0%, #C9A962 50%, #B8953F 100%);
+  color: #1C1714;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 200ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+    0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.load-btn:hover {
+  filter: brightness(1.15);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+    0 6px 16px rgba(201, 169, 98, 0.3);
+}
+
+.load-btn:active {
+  filter: brightness(0.95);
+  transform: translateY(1px);
+}
+
+/* 空狀態 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  gap: 16px;
+  padding: 40px 20px;
+}
+
+.empty-icon {
+  font-size: 64px;
+  margin: 0;
+  opacity: 0.5;
+}
+
+.empty-text {
+  font-size: 16px;
+  color: var(--foreground);
+  font-family: var(--font-body);
+  margin: 0;
+  font-weight: 500;
+}
+
+.empty-hint {
+  font-size: 13px;
+  color: var(--muted-foreground);
+  font-family: var(--font-body);
+  margin: 0;
+  font-style: italic;
+}
+
+/* 響應式 */
+@media (max-width: 1024px) {
+  .saved-trips-page {
+    padding: 24px 16px;
+  }
+
+  .trips-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .saved-trips-page {
+    padding: 20px 14px;
+  }
+
+  .page-header {
+    margin-bottom: 24px;
+  }
+
+  .page-title {
+    font-size: 20px;
+  }
+
+  .trips-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .trip-card {
+    padding: 18px;
+    gap: 12px;
+  }
+
+  .destination-name {
+    font-size: 18px;
+  }
+
+  .search-input {
+    font-size: 13px;
+    padding: 10px 14px;
+  }
+
+  .detail-row {
+    font-size: 12px;
+  }
+
+  .load-btn {
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,120 @@
+.trip-map {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: fadeInUp 0.5s ease-out 0.05s backwards;
+}
+
+.trip-map h2 {
+  font-size: 16px;
+  margin: 0;
+  color: var(--accent);
+  font-weight: 600;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+}
+
+.map-container {
+  width: 100%;
+  height: 500px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border);
+  background: var(--background-alt);
+  transition: all 300ms ease;
+  position: relative;
+}
+
+.map-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.map-container:hover {
+  box-shadow: 0 8px 24px rgba(201, 169, 98, 0.2);
+  border-color: var(--accent);
+}
+
+.map-legend {
+  font-size: 13px;
+  color: var(--muted-foreground);
+  text-align: center;
+  margin: 0;
+  padding: 12px 16px;
+  background: rgba(201, 169, 98, 0.05);
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  font-family: var(--font-body);
+  letter-spacing: 0.5px;
+}
+
+.marker-popup {
+  font-size: 13px;
+  line-height: 1.6;
+  padding: 12px;
+  font-family: var(--font-body);
+}
+
+.popup-title {
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 6px;
+  font-size: 11px;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+}
+
+.popup-name {
+  color: var(--foreground);
+  font-weight: 500;
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-family: var(--font-body);
+  letter-spacing: 0.5px;
+}
+
+.popup-rating {
+  color: var(--muted-foreground);
+  font-size: 12px;
+  font-family: var(--font-body);
+}
+
+/* Leaflet 標記動畫 */
+.leaflet-marker-icon {
+  animation: fadeInDown 0.5s ease-out;
+}
+
+.leaflet-popup {
+  animation: scaleIn 0.3s ease-out;
+}
+
+/* Leaflet 自訂樣式 */
+.leaflet-popup-content-wrapper {
+  background: var(--background-alt) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 4px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+.leaflet-popup-tip {
+  background: var(--background-alt) !important;
+  border: 1px solid var(--border) !important;
+}
+
+@media (max-width: 768px) {
+  .map-container {
+    height: 350px;
+  }
+}

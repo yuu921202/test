@@ -1,0 +1,358 @@
+.app-container {
+  min-height: 100vh;
+  background: var(--background);
+  padding-bottom: 64px;
+}
+
+.app-header {
+  background: var(--background);
+  padding: 64px 20px;
+  border-bottom: 1px solid var(--border);
+  animation: fadeInDown 0.5s ease-out;
+  position: relative;
+}
+
+.header-content {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.header-icon {
+  color: var(--accent);
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 4px rgba(201, 169, 98, 0.3));
+}
+
+.header-content h1 {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  margin: 0;
+  color: var(--foreground);
+  font-weight: 500;
+  font-family: var(--font-heading);
+  letter-spacing: -1px;
+  line-height: 1.1;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4), -1px -1px 1px rgba(255, 255, 255, 0.05);
+}
+
+.header-subtitle {
+  font-size: clamp(0.875rem, 2vw, 1.125rem);
+  color: var(--muted-foreground);
+  margin: 12px 0 0 0;
+  font-weight: 400;
+  font-family: var(--font-body);
+  letter-spacing: 0.5px;
+}
+
+.app-content {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.form-section {
+  background: var(--background-alt);
+  padding: 48px 32px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  margin-bottom: 32px;
+  animation: fadeInUp 0.5s ease-out 0.1s backwards;
+  position: relative;
+}
+
+.form-section::before,
+.form-section::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--accent);
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+
+.form-section::before {
+  top: -1px;
+  left: -1px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.form-section::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: none;
+  border-top: none;
+}
+
+.form-section:hover::before,
+.form-section:hover::after {
+  opacity: 1;
+}
+
+.results-wrapper {
+  background: var(--background-alt);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  animation: fadeInUp 0.5s ease-out 0.15s backwards;
+}
+
+.tabs {
+  display: flex;
+  gap: 0;
+  background: transparent;
+  padding: 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.tab {
+  flex: 0 0 auto;
+  padding: 16px 24px;
+  background: none;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  transition: all 300ms ease;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+}
+
+.tab:hover {
+  color: var(--accent);
+}
+
+.tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  box-shadow: inset 0 -2px 0 rgba(201, 169, 98, 0.3);
+}
+
+.results-section {
+  padding: 32px;
+  min-height: 400px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.error-message {
+  background: rgba(139, 38, 53, 0.15);
+  color: #ffb3c1;
+  padding: 14px 16px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  border: 1px solid var(--accent-secondary);
+  border-left: 3px solid var(--accent-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: fadeInUp 0.25s ease-out;
+}
+
+.error-message svg {
+  flex-shrink: 0;
+  color: var(--accent-secondary);
+}
+
+.loading-container {
+  text-align: center;
+  padding: 80px 40px;
+  color: var(--muted-foreground);
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: spin 2s linear infinite;
+}
+
+.loading-spinner svg {
+  color: var(--accent);
+  filter: drop-shadow(0 0 4px rgba(201, 169, 98, 0.3));
+}
+
+.loading-text {
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--font-body);
+  color: var(--muted-foreground);
+  letter-spacing: 0.5px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .app-header {
+    padding: 48px 20px;
+  }
+
+  .header-content h1 {
+    font-size: 1.75rem;
+  }
+
+  .header-subtitle {
+    font-size: 0.875rem;
+  }
+
+  .form-section {
+    padding: 24px 16px;
+    border-radius: 4px;
+  }
+
+  .form-section::before,
+  .form-section::after {
+    width: 24px;
+    height: 24px;
+  }
+
+  .results-section {
+    padding: 20px;
+  }
+
+  .tabs {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .tab {
+    padding: 12px 16px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  .loading-container {
+    padding: 60px 20px;
+  }
+
+  .form-top-buttons {
+    margin-bottom: 16px;
+  }
+
+  .view-saved-btn {
+    padding: 8px 12px;
+    font-size: 11px;
+    gap: 4px;
+  }
+
+  .results-top-buttons {
+    gap: 16px;
+  }
+
+  .back-btn,
+  .back-to-form-btn {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+}
+
+/* 表單頂部按鈕區 */
+.form-top-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 24px;
+  animation: fadeInDown 0.4s ease-out 0.1s backwards;
+}
+
+.view-saved-btn {
+  padding: 10px 16px;
+  background: rgba(156, 139, 122, 0.2);
+  color: var(--accent);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 200ms ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.view-saved-btn:hover {
+  background: rgba(201, 169, 98, 0.15);
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px rgba(201, 169, 98, 0.15);
+}
+
+.view-saved-btn:active {
+  transform: translateY(1px);
+}
+
+/* 結果頂部按鈕區 */
+.results-top-buttons {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+  animation: fadeInDown 0.4s ease-out;
+}
+
+.back-btn,
+.back-to-form-btn {
+  padding: 10px 16px;
+  background: rgba(156, 139, 122, 0.2);
+  color: var(--muted-foreground);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 200ms ease;
+  white-space: nowrap;
+}
+
+.back-btn:hover,
+.back-to-form-btn:hover {
+  background: rgba(201, 169, 98, 0.12);
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 4px 12px rgba(201, 169, 98, 0.15);
+}
+
+.back-btn:active,
+.back-to-form-btn:active {
+  transform: translateY(1px);
+}
+
+/* 已保存頁面區 */
+.saved-section {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+}

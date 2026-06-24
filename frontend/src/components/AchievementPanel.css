@@ -1,0 +1,297 @@
+.achievement-panel {
+  padding: 24px;
+  background: rgba(58, 51, 43, 0.5);
+  border: 2px solid var(--accent);
+  border-radius: 4px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 16px rgba(201, 169, 98, 0.1);
+}
+
+.achievement-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.achievement-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.achievement-title svg {
+  color: var(--accent);
+}
+
+.achievement-title h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 0;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.points-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.points-value {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--accent);
+  font-family: var(--font-heading);
+}
+
+.points-label {
+  font-size: 11px;
+  color: var(--muted-foreground);
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* 进度部分 */
+.progress-section {
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progress-label {
+  font-size: 12px;
+  color: var(--muted-foreground);
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+.progress-text {
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 600;
+  font-family: var(--font-body);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(156, 139, 122, 0.2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #C9A962 0%, #D4B872 100%);
+  transition: width 0.3s ease;
+  box-shadow: 0 0 8px rgba(201, 169, 98, 0.4);
+}
+
+.spin-button-small {
+  padding: 10px 16px;
+  background: linear-gradient(180deg, #4ade80 0%, #22c55e 100%);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 200ms ease;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 2px 6px rgba(34, 197, 94, 0.3);
+  text-align: center;
+  width: 100%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.spin-button-small:hover {
+  filter: brightness(1.1);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 4px 12px rgba(34, 197, 94, 0.5);
+}
+
+.spin-button-small:active {
+  filter: brightness(0.95);
+  transform: translateY(1px);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      0 2px 6px rgba(34, 197, 94, 0.3);
+  }
+  50% {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      0 4px 12px rgba(34, 197, 94, 0.5);
+  }
+}
+
+/* 徽章网格 */
+.badges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.badge-card {
+  position: relative;
+  padding: 16px 12px;
+  background: rgba(58, 51, 43, 0.3);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.badge-card.unlocked {
+  background: rgba(201, 169, 98, 0.1);
+  border-color: var(--accent);
+}
+
+.badge-card.unlocked:hover {
+  background: rgba(201, 169, 98, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(201, 169, 98, 0.2);
+}
+
+.badge-card.locked {
+  opacity: 0.6;
+}
+
+.badge-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: rgba(156, 139, 122, 0.1);
+  border-radius: 50%;
+}
+
+.badge-emoji {
+  font-size: 32px;
+  display: block;
+  transition: all 200ms ease;
+}
+
+.badge-emoji.grayscale {
+  filter: grayscale(100%) opacity(0.4);
+}
+
+.badge-card.unlocked .badge-emoji {
+  animation: bounceIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0) rotate(-30deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
+}
+
+.badge-lock {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  font-size: 16px;
+}
+
+.badge-info {
+  text-align: center;
+}
+
+.badge-label {
+  font-size: 12px;
+  color: var(--foreground);
+  margin: 0;
+  font-weight: 500;
+  font-family: var(--font-body);
+  line-height: 1.3;
+}
+
+.badge-description {
+  font-size: 11px;
+  color: var(--muted-foreground);
+  margin: 4px 0 0 0;
+  font-style: italic;
+  font-family: var(--font-body);
+  line-height: 1.4;
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* 移动端响应 */
+@media (max-width: 768px) {
+  .achievement-panel {
+    padding: 20px;
+  }
+
+  .achievement-header {
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+  }
+
+  .achievement-title h3 {
+    font-size: 14px;
+  }
+
+  .points-value {
+    font-size: 20px;
+  }
+
+  .badges-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+  }
+
+  .badge-card {
+    padding: 12px 10px;
+    gap: 6px;
+  }
+
+  .badge-visual {
+    width: 48px;
+    height: 48px;
+  }
+
+  .badge-emoji {
+    font-size: 26px;
+  }
+
+  .badge-label {
+    font-size: 11px;
+  }
+}
